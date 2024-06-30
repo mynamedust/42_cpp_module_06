@@ -2,17 +2,30 @@
 #define SCALARCONVERTER_H
 
 #include <string>
+#include <iostream>
+#include <ostream>
 
 
 class ScalarConverter {
-	std::string getType(std::string literal);
-	bool checkChar(std::string literal);
-	bool checkInt(std::string literal);
-	bool checkFloat(std::string literal);
-	bool checkDouble(std::string literal);
-	bool checkInf(std::string literal);
-	bool checkPseudo(std::string literal);
+	static const char *pseudof[3];
+	static const char *pseudod[3];
+	static bool validateLiteral(std::string literal);
+	static int getType(std::string literal);
+	static bool checkChar(std::string literal);
+	static bool checkInt(std::string literal);
+	static bool checkFloat(std::string literal);
+	static bool checkDouble(std::string literal);
+	static bool checkPseudof(std::string literal);
+	static bool checkPseudod(std::string literal);
 public:
+	enum type {
+		CHAR,
+		INT,
+		FLOAT,
+		DOUBLE,
+		PSEUDOF,
+		PSEUDOD
+	};
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& other);
 	~ScalarConverter();
