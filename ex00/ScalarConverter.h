@@ -5,18 +5,38 @@
 #include <iostream>
 #include <ostream>
 
+typedef struct s_literal {
+	int type;
+
+	char c;
+	float f;
+	double d;
+	int i;
+} literal;
 
 class ScalarConverter {
 	static const char *pseudof[3];
 	static const char *pseudod[3];
-	static bool validateLiteral(std::string literal);
-	static int getType(std::string literal);
-	static bool checkChar(std::string literal);
-	static bool checkInt(std::string literal);
-	static bool checkFloat(std::string literal);
-	static bool checkDouble(std::string literal);
-	static bool checkPseudof(std::string literal);
-	static bool checkPseudod(std::string literal);
+
+	static bool validateLiteral(std::string s);
+	static int getType(std::string s);
+	static literal parseString(int type, const std::string &s);
+	static void printLiteral(literal s);
+
+	static bool checkChar(std::string s);
+	static bool checkInt(std::string s);
+	static bool checkFloat(std::string s);
+	static bool checkDouble(std::string s);
+	static bool checkPseudof(std::string s);
+	static bool checkPseudod(std::string s);
+
+	static literal castFromChar(std::string s);
+	static literal castFromFloat(std::string s);
+	static literal castFromDouble(std::string s);
+	static literal castFromInt(std::string s);
+	static literal castFromPseudof(std::string s);
+	static literal castFromPreusod(std::string s);
+
 public:
 	enum type {
 		CHAR,
