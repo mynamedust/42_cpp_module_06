@@ -18,6 +18,11 @@ class ScalarConverter {
 	static const char *pseudof[3];
 	static const char *pseudod[3];
 
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter& other);
+	~ScalarConverter();
+	ScalarConverter &operator=(const ScalarConverter& other);
+
 	static bool validateLiteral(std::string s);
 	static int getType(std::string s);
 	static literal parseString(int type, const std::string &s);
@@ -46,10 +51,6 @@ public:
 		PSEUDOF,
 		PSEUDOD
 	};
-	ScalarConverter();
-	ScalarConverter(const ScalarConverter& other);
-	~ScalarConverter();
-	ScalarConverter &operator=(const ScalarConverter& other);
 
 	static void convert(std::string literal);
 };
